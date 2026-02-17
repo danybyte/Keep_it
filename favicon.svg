@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1810"/>
+      <stop offset="100%" stop-color="#1b3a24"/>
+    </linearGradient>
+    <style>
+      @font-face {
+        font-family: "RooyinFav";
+        src: url("Vendor/Rooyin/Webfont/RooyinFree-Bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+      }
+      .glyph {
+        font-family: "RooyinFav", "Rooyin", sans-serif;
+        font-size: 40px;
+        font-weight: 700;
+        fill: #ffffff;
+      }
+    </style>
+  </defs>
+
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#bg)" stroke="#45ae4c" stroke-width="2"/>
+  <text x="32" y="44" text-anchor="middle" class="glyph">K</text>
+</svg>

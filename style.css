@@ -1,0 +1,506 @@
+body {
+    background: #020024;
+    background: linear-gradient(90deg, rgb(8, 10, 9) 0%, rgb(29, 44, 31) 35%, rgb(8, 10, 9) 100%);
+    min-height: 100vh;
+    margin: 0;
+    color: white;
+}
+
+header.fixed-top {
+    z-index: 1030;
+    padding-top: .5rem;
+}
+
+.main-content {
+    padding: 1rem;
+    padding-top: 6rem;
+    min-height: 100vh;
+}
+
+.app-shell {
+    min-height: calc(100vh - 7rem);
+}
+
+.app-view {
+    width: 100%;
+}
+
+.home-slider-shell {
+    position: relative;
+    padding-inline: 3.2rem;
+    min-height: 280px;
+}
+
+.home-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 50%;
+    color: #fff;
+    background: rgba(8, 20, 12, 0.7);
+    transition: border-color .2s ease, background-color .2s ease;
+}
+
+.home-nav i {
+    pointer-events: none;
+}
+
+.home-nav-prev {
+    left: .25rem;
+}
+
+.home-nav-next {
+    right: .25rem;
+}
+
+.home-nav:hover:not(:disabled) {
+    border-color: rgba(69, 174, 76, .8);
+    background: rgba(15, 40, 22, 0.85);
+}
+
+.home-nav:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+.home-passwords-viewport {
+    border-radius: .9rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(2, 10, 6, 0.55);
+    padding: .75rem;
+    overflow: hidden;
+}
+
+.home-password-list {
+    display: flex;
+    gap: .75rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    padding-bottom: .2rem;
+    min-height: 150px;
+    cursor: grab;
+    user-select: none;
+}
+
+.home-password-list::-webkit-scrollbar {
+    display: none;
+}
+
+.home-password-list.is-dragging {
+    cursor: grabbing;
+}
+
+.home-password-list.is-dragging * {
+    user-select: none;
+}
+
+.home-password-card {
+    flex: 0 0 clamp(220px, 24vw, 270px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: .85rem;
+    background: rgba(1, 8, 5, 0.72);
+    padding: .75rem;
+    cursor: pointer;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.home-password-card:hover {
+    border-color: rgba(69, 174, 76, .8);
+    box-shadow: 0 0 0 1px rgba(69, 174, 76, .25);
+}
+
+.home-empty-state {
+    border-radius: .75rem;
+    border: 1px dashed rgba(255, 255, 255, 0.24);
+    padding: .95rem;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+
+.home-generator {
+    width: 100%;
+}
+
+.generator-result {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: .7rem;
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    padding: .8rem .9rem;
+    font-size: .95rem;
+    word-break: break-all;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+}
+
+.app-view-full {
+    min-height: calc(100vh - 7.5rem);
+}
+
+.panel-fill {
+    width: 100%;
+    min-height: calc(100vh - 9rem);
+}
+
+.page-title {
+    font-size: 2.25rem;
+    line-height: 1.1;
+}
+
+.section-title {
+    font-family: 'Rooyin', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.panel-card {
+    padding: 1rem;
+    border-radius: .85rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background-color: rgba(1, 8, 5, 0.55);
+}
+
+.manager-layout {
+    width: 100%;
+    min-height: inherit;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+    gap: 1rem;
+}
+
+.panel-card .form-label {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.panel-card .form-control {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.panel-card .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.panel-card .form-control:focus {
+    color: #fff;
+    border-color: rgba(69, 174, 76, 0.9);
+    box-shadow: 0 0 0 .2rem rgba(69, 174, 76, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.password-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: .65rem;
+    align-items: stretch;
+    max-height: calc(100vh - 14rem);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: .2rem;
+}
+
+.password-item {
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    border-radius: .75rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background-color: rgba(1, 8, 5, 0.55);
+    padding: 2rem .75rem .65rem;
+    display: flex;
+    flex-direction: column;
+    transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+
+.password-item:hover {
+    border-color: rgba(69, 174, 76, .7);
+    background-color: rgba(10, 30, 14, 0.72);
+    box-shadow: 0 0 0 1px rgba(69, 174, 76, .2);
+}
+
+.password-head {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    margin-right: 2.2rem;
+}
+
+.site-logo-wrap {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.site-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.site-logo-fallback {
+    font-size: .72rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.password-item.is-active {
+    border-color: rgba(69, 174, 76, .95);
+    box-shadow: 0 0 0 1px rgba(69, 174, 76, .35);
+}
+
+.password-actions {
+    position: absolute;
+    top: .45rem;
+    right: .45rem;
+}
+
+.password-delete-btn {
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #fff;
+    background: transparent;
+    border-radius: .45rem;
+    font-size: .72rem;
+    line-height: 1;
+    padding: .26rem .4rem;
+}
+
+.password-delete-btn:hover {
+    border-color: #dc3545;
+    color: #fff;
+    background-color: #dc3545;
+}
+
+.password-name {
+    margin: 0;
+    font-weight: 700;
+    color: #fff;
+    font-size: .95rem;
+}
+
+.password-url,
+.password-value {
+    margin: .15rem 0 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: .78rem;
+    word-break: break-word;
+}
+
+.password-suburl {
+    margin: .15rem 0 0;
+    color: rgba(255, 255, 255, 0.58);
+    font-size: .72rem;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.2em;
+}
+
+.password-value {
+    margin-top: auto;
+}
+
+.empty-state {
+    border-radius: .75rem;
+    border: 1px dashed rgba(255, 255, 255, 0.25);
+    padding: 1rem;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.manager-editor .form-control {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.manager-editor .form-control:focus {
+    color: #fff;
+    border-color: rgba(69, 174, 76, 0.9);
+    box-shadow: 0 0 0 .2rem rgba(69, 174, 76, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.popup-modal {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: linear-gradient(130deg, rgba(3, 13, 8, 0.96), rgba(15, 34, 20, 0.96));
+    color: #fff;
+}
+
+.popup-modal .modal-title {
+    color: #fff;
+    font-weight: 700;
+}
+
+.text-white-75 {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+#mainNavbar {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    background-color: rgba(2, 8, 5, 0.4);
+}
+
+#mainNavbar .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+    padding-inline: .85rem !important;
+}
+
+#mainNavbar .nav-link.T,
+#mainNavbar .navbar-brand.T {
+    font-weight: 700 !important;
+}
+
+#mainNavbar .navbar-brand {
+    color: #fff !important;
+    letter-spacing: .02em;
+}
+
+#mainNavbar .nav-link:hover,
+#mainNavbar .nav-link:focus,
+#mainNavbar .nav-link.active {
+    color: #45ae4c !important;
+}
+
+#mainNavbar .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+#mainNavbar .navbar-toggler:focus {
+    box-shadow: none;
+}
+
+#mainNavbar .social-links a {
+    color: #ffcc57;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+
+.settings-trigger {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.settings-trigger:hover {
+    border-color: rgba(69, 174, 76, .9);
+    color: #45ae4c;
+}
+
+.settings-modal .modal-body {
+    max-height: 72vh;
+    overflow-y: auto;
+}
+
+.settings-card {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: .75rem;
+    padding: .9rem;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.settings-danger {
+    border-color: rgba(220, 53, 69, 0.45);
+}
+
+.settings-card code {
+    color: #7adf84;
+}
+
+@media (max-width: 991.98px) {
+    #mainNavbar .navbar-collapse {
+        margin-top: .75rem;
+        padding: .75rem .9rem;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: .75rem;
+        background-color: rgba(1, 7, 4, 0.75);
+    }
+
+    #mainNavbar .social-links {
+        margin-top: .45rem;
+    }
+
+    .main-content {
+        padding-top: 5.5rem;
+    }
+
+    .app-view-full {
+        min-height: auto;
+    }
+
+    .panel-fill {
+        min-height: auto;
+    }
+
+    .manager-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .password-list {
+        max-height: none;
+        overflow-y: visible;
+    }
+
+    .home-slider-shell {
+        padding-inline: 2.8rem;
+    }
+
+    .home-nav-prev,
+    .home-nav-next {
+        width: 36px;
+        height: 36px;
+    }
+
+    .home-password-card {
+        flex-basis: 82%;
+    }
+
+    .password-item {
+        min-width: 0;
+    }
+}
+
+@font-face {
+    font-family: Rooyin;
+    font-style: normal;
+    font-weight: 400;
+    src: url('Vendor/Rooyin/Webfont/RooyinFree-Regular.woff2') format('woff2');
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: Rooyin;
+    font-style: normal;
+    font-weight: 700;
+    src: url('Vendor/Rooyin/Webfont/RooyinFree-Bold.woff2') format('woff2');
+    font-display: fallback;
+}
+
+.T {
+    font-family: 'Rooyin', sans-serif !important;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.text-Th {
+    color: #45ae4c
+}

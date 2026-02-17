@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keep It</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="Vendor/All the bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="Vendor/FontAwesome.Pro.7.1.0/css/all.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.2.0/css/all.css" />
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.2.0/css/sharp-solid.css" />
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.2.0/css/sharp-regular.css" />
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.2.0/css/sharp-light.css" />
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v7.2.0/css/duotone.css" />
+</head>
+
+<body>
+    <header class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent" id="mainNavbar">
+            <div class="container px-3 px-lg-0">
+                <a class="navbar-brand fw-semibold text-white T" href="#">Keep It</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link text-white active js-nav-link T" href="#"
+                                data-view="home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link text-white js-nav-link T" href="#" data-view="add">Add
+                                Password</a></li>
+                        <li class="nav-item"><a class="nav-link text-white js-nav-link T" href="#"
+                                data-view="manager">Password Manager</a></li>
+                        <li class="nav-item my-auto">
+                            <button class="btn btn-outline-light btn-sm settings-trigger" type="button"
+                                data-bs-toggle="modal" data-bs-target="#settingsModal">
+                                <i class="fa-solid fa-gear me-1"></i> Settings
+                            </button>
+                        </li>
+                        <li class="nav-item mx-lg-3 my-auto social-links">
+                            <a href="https://x.com/DanyByte11"><i class="fa-brands fa-x-twitter"
+                                    style="color: rgb(69 174 76);"></i></a>
+                            <a href="https://github.com/danybyte"><i class="fa-brands fa-github"
+                                    style="color: rgb(69 174 76);"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container-fluid px-3 px-lg-4 app-shell">
+            <section id="view-home" class="app-view">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h1 class="T page-title mb-0">Your Passwords</h1>
+                    <span class="badge text-bg-success" id="homePasswordCount">0</span>
+                </div>
+                <p class="text-white-50 mb-3">Quick view of your saved accounts.</p>
+
+                <div class="home-slider-shell">
+                    <button class="home-nav home-nav-prev" id="homePrev" type="button" aria-label="Previous passwords">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+
+                    <div class="home-passwords-viewport" id="homePasswordViewport">
+                        <div id="homePasswordList" class="home-password-list"></div>
+                        <div id="homeEmpty" class="home-empty-state d-none">No passwords yet. Add one from Add Password.
+                        </div>
+                    </div>
+
+                    <button class="home-nav home-nav-next" id="homeNext" type="button" aria-label="Next passwords">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="panel-card home-generator mt-3">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+                        <h2 class="section-title fs-4 mb-0">Password Generator</h2>
+                    </div>
+                    <p class="text-white-50 small mb-2">Create a strong random password, then save it to Add Password.</p>
+                    <div id="generatedPasswordValue" class="generator-result">No password generated yet.</div>
+                    <div class="d-flex flex-wrap gap-2 mt-3">
+                        <button class="btn btn-outline-light" type="button" id="generatePasswordButton">Generate
+                            Password</button>
+                        <button class="btn btn-success" type="button" id="saveGeneratedPassword" disabled>Save</button>
+                        <button class="btn btn-outline-danger" type="button" id="deleteGeneratedPassword"
+                            disabled>Delete</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-add" class="app-view app-view-full d-none">
+                <div class="panel-card panel-fill">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <h2 class="section-title mb-0">Add Password</h2>
+                    </div>
+                    <form id="addPasswordForm" class="row g-3" novalidate>
+                        <div class="col-12">
+                            <label class="form-label" for="siteUrl"><i class="fa-thin fa-link-simple"
+                                    style="color: rgb(255, 255, 255);"></i> URL</label>
+                            <input class="form-control form-control-lg" type="url" id="siteUrl" name="url"
+                                placeholder="https://example.com" required>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="form-label" for="siteUsername"><i class="fa-thin fa-user"
+                                    style="color: rgb(255, 255, 255);"></i> Username</label>
+                            <input class="form-control form-control-lg" type="text" id="siteUsername" name="username"
+                                placeholder="Account Username" required>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="form-label" for="sitePassword"><i class="fa-sharp fa-thin fa-key"
+                                    style="color: rgb(255, 255, 255);"></i> Password</label>
+                            <input class="form-control form-control-lg" type="text" id="sitePassword" name="password"
+                                placeholder="Enter password" required>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-success px-4" type="submit"><i class="fa-sharp fa-thin fa-check"
+                                    style="color: rgb(255, 255, 255);"></i> Save Password</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section id="view-manager" class="app-view app-view-full d-none">
+                <div class="manager-layout">
+                    <div class="panel-card panel-fill">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h2 class="section-title mb-0">Password Manager</h2>
+                            <span class="badge text-bg-success" id="passwordCount">0</span>
+                        </div>
+                        <div id="passwordList" class="password-list"></div>
+                    </div>
+
+                    <aside class="panel-card panel-fill manager-editor">
+                        <div id="editorPlaceholder"
+                            class="empty-state h-100 mb-0 d-flex align-items-center justify-content-center">
+                            Click a password card to view and edit it.
+                        </div>
+
+                        <form id="editPasswordForm" class="d-none" novalidate>
+                            <input type="hidden" id="editPasswordId">
+                            <h3 class="section-title fs-4 mb-3">Edit Password</h3>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="editSiteUrl"><i class="fa-thin fa-link-simple"
+                                        style="color: rgb(255, 255, 255);"></i> URL</label>
+                                <input class="form-control" type="url" id="editSiteUrl" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="editSiteUsername"><i class="fa-thin fa-user"
+                                        style="color: rgb(255, 255, 255);"></i> Username</label>
+                                <input class="form-control" type="text" id="editSiteUsername" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label" for="editSitePassword"><i class="fa-sharp fa-thin fa-key"
+                                        style="color: rgb(255, 255, 255);"></i> Password</label>
+                                <input class="form-control" type="password" id="editSitePassword" required>
+                            </div>
+
+                            <div class="d-flex flex-wrap gap-2">
+                                <button class="btn btn-success" type="submit" id="saveChangesButton" disabled>Save
+                                    Changes</button>
+                                <button class="btn btn-outline-light" type="button" id="toggleEditPassword">Show
+                                    Password</button>
+                                <button class="btn btn-outline-danger ms-lg-auto" type="button"
+                                    id="deleteFromEditor">Delete</button>
+                            </div>
+                        </form>
+                    </aside>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="modal fade" id="sitePopup" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content popup-modal">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title" id="sitePopupTitle">Notice</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-2">
+                    <p class="mb-0 text-white-75" id="sitePopupMessage"></p>
+                </div>
+                <div class="modal-footer border-0 pt-1">
+                    <button type="button" class="btn btn-outline-light" id="sitePopupCancel">Cancel</button>
+                    <button type="button" class="btn btn-success" id="sitePopupConfirm">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="settingsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content popup-modal settings-modal">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title">Settings</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-3">
+                    <div class="settings-card mb-3">
+                        <h6 class="mb-2">Import / Export Passwords (CSV)</h6>
+                        <p class="text-white-75 small mb-3">Export all saved accounts to a CSV file, or import from a CSV
+                            with columns: <code>url,username,password</code>.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="button" class="btn btn-outline-light" id="exportCsvButton">Export CSV</button>
+                            <button type="button" class="btn btn-success" id="importCsvButton">Import CSV</button>
+                            <input type="file" id="importCsvInput" accept=".csv,text/csv" class="d-none">
+                        </div>
+                    </div>
+
+                    <div class="settings-card settings-danger">
+                        <h6 class="mb-2 text-danger">Clear Data</h6>
+                        <p class="text-white-75 small mb-2">This will permanently delete all saved passwords.</p>
+                        <p class="small mb-2">Type <code>CLEAR DATA</code> to enable delete:</p>
+                        <input type="text" class="form-control mb-3" id="clearDataConfirmInput"
+                            placeholder="Type CLEAR DATA">
+                        <button type="button" class="btn btn-danger" id="clearDataButton" disabled>Clear All Data</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Vendor/All the bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
