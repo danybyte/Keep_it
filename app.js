@@ -1,4 +1,4 @@
-﻿(() => {
+(() => {
     const STORAGE_KEY = "keepit_passwords_v1";
 
     const navLinks = Array.from(document.querySelectorAll(".js-nav-link"));
@@ -107,6 +107,16 @@
         } catch (error) {
             return clean(url).replace(/^https?:\/\//i, "").split("/")[0];
         }
+    }
+
+    function getSiteName(url) {
+        const host = getHostname(url);
+        if (!host) {
+            return "Unknown Site";
+        }
+
+        const base = host.split(".")[0] || host;
+        return base.charAt(0).toUpperCase() + base.slice(1);
     }
 
     function getFaviconUrl(url) {
@@ -835,7 +845,7 @@
 
             const username = document.createElement("p");
             username.className = "password-name";
-            username.textContent = shortText(entry.username, 30);
+            username.textContent = shortText(getSiteName(entry.url), 30);
 
             const host = document.createElement("p");
             host.className = "password-url";
@@ -918,7 +928,7 @@
 
             const username = document.createElement("p");
             username.className = "password-name";
-            username.textContent = shortText(entry.username);
+            username.textContent = shortText(getSiteName(entry.url));
 
             const host = document.createElement("p");
             host.className = "password-url";
