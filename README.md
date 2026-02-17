@@ -1,5 +1,5 @@
 
-# Keep It
+# Keep It 
 
 Keep It is a clean and modern password manager web app with local-first storage, strong password generation, and easy account management.
 
@@ -11,7 +11,6 @@ Keep It is a clean and modern password manager web app with local-first storage,
 - Password Manager view with quick card-based browsing
 - Home dashboard with password generator
 - Strong random password generation (16 chars)
-- <img width="1810" height="232" alt="image" src="https://github.com/user-attachments/assets/b3d5b259-2f56-46fc-b1ce-5b6750ceedb4" />
 - CSV export and import (`url,username,password`)
 - Duplicate account prevention
 - Clear all data flow with typed confirmation (`CLEAR DATA`)
@@ -36,10 +35,14 @@ Keep It is a clean and modern password manager web app with local-first storage,
 - No backend, no cloud sync (currently)
 - Clearing browser storage removes saved passwords
 
+<img width="750" height="534" alt="image" src="https://github.com/user-attachments/assets/456486ad-a991-4536-baa2-ea648c6334b4" />
+
 ## Getting Started
 
 1. Clone/download the project
 2. Open `index.html` in your browser
+
+<img width="1810" height="232" alt="image" src="https://github.com/user-attachments/assets/b3d5b259-2f56-46fc-b1ce-5b6750ceedb4" />
 
 ## CSV Format
 
