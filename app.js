@@ -192,6 +192,19 @@
         }
     }
 
+    function disableInputSuggestions() {
+        const fields = Array.from(document.querySelectorAll("input, textarea"));
+        fields.forEach((field) => {
+            field.setAttribute("autocomplete", "off");
+            field.setAttribute("autocorrect", "off");
+            field.setAttribute("autocapitalize", "off");
+            field.setAttribute("spellcheck", "false");
+            if (field.tagName === "INPUT") {
+                field.setAttribute("name", `no_suggest_${field.id || Math.random().toString(36).slice(2, 8)}`);
+            }
+        });
+    }
+
     function updateGeneratorUI() {
         if (!generatedPasswordValue || !saveGeneratedPassword || !deleteGeneratedPassword) {
             return;
@@ -1254,6 +1267,7 @@
     }
 
     function init() {
+        disableInputSuggestions();
         initPopup();
         initSettingsModal();
         initEvents();
