@@ -1,4 +1,4 @@
-(() => {
+﻿(() => {
     const STORAGE_KEY = "keepit_passwords_v1";
 
     const navLinks = Array.from(document.querySelectorAll(".js-nav-link"));
@@ -199,9 +199,6 @@
             field.setAttribute("autocorrect", "off");
             field.setAttribute("autocapitalize", "off");
             field.setAttribute("spellcheck", "false");
-            if (field.tagName === "INPUT") {
-                field.setAttribute("name", `no_suggest_${field.id || Math.random().toString(36).slice(2, 8)}`);
-            }
         });
     }
 
