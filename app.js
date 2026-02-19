@@ -1,4 +1,4 @@
-﻿(() => {
+(() => {
     const STORAGE_KEY = "keepit_passwords_v1";
 
     const navLinks = Array.from(document.querySelectorAll(".js-nav-link"));
